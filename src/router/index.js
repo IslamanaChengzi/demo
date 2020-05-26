@@ -1,8 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+// markdown
+import markdown from '@/markdown/index.vue';
+//elementUi
+import elementUi from '@/elementUi/index.vue';
 
-import markdown from '@/markdown/index.vue'
 
 Vue.use(VueRouter)
 
@@ -12,7 +15,13 @@ const router = new VueRouter({
             path: '/markdown',
             name: 'user',
             component: markdown
-        }
+        },
+        {
+            path: '/elementUi',
+            name: 'user',
+            component: elementUi
+        },
+
     ]
 });
 
