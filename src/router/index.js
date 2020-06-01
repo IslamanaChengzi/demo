@@ -10,15 +10,16 @@ import elementUi from '@/elementUi/index.vue';
 Vue.use(VueRouter)
 
 const router = new VueRouter({
+    mode: 'history',
     routes: [
         {
             path: '/markdown',
-            name: 'user',
+            name: 'markdown',
             component: markdown
         },
         {
             path: '/elementUi',
-            name: 'user',
+            name: 'elementUi',
             component: elementUi
         },
 
