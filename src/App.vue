@@ -1,23 +1,37 @@
 <template>
-  <div>
-    <Header></Header>
-    <router-view></router-view>
-    <Footer></Footer>
-  </div>
+    <div class="app">
+        <Header></Header>
+        <router-view class="viewWrap"></router-view>
+        <Footer></Footer>
+    </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
-  name: 'App',
-  components: {
-    Header,
-    Footer
-  }
-}
+    name: "App",
+    components: {
+        Header,
+        Footer
+    }
+};
 </script>
 <style>
-  @import "./assets/reset.css";
+@import "./assets/reset.css";
+.viewWrap {
+	background: #0cc;
+	position: absolute;
+	top: 50px;
+	left: 0;
+	right: 0;
+	bottom: 30px;
+	overflow-y: auto;
+}
+html,body,.app {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
 </style>

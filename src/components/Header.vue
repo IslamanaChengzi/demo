@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="header">
         <el-row :gutter="20">
             <el-col :span="6">
                 <div class="grid-content bg-purple">
@@ -12,10 +12,14 @@
                 </div>
             </el-col>
             <el-col :span="6">
-                <div class="grid-content bg-purple"></div>
+                <div class="grid-content bg-purple">
+                    <router-link to="/component">Go to component</router-link>
+                </div>
             </el-col>
             <el-col :span="6">
-                <div class="grid-content bg-purple"></div>
+                <div class="grid-content bg-purple">
+                    <router-link to="/vuejs">Go to vueJS</router-link>
+                </div>
             </el-col>
         </el-row>
     </div>
