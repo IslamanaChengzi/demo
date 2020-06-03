@@ -26,7 +26,8 @@ export default {
 	top: 50px;
 	left: 0;
 	right: 0;
-	bottom: 30px;
+    bottom: 30px;
+    padding: 10px 20px;
 	overflow-y: auto;
 }
 html,body,.app {
