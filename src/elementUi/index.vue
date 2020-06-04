@@ -1,5 +1,9 @@
 <template>
     <div>
+        <br>
+        <br>
+        <h1>搞定table无数据设置</h1>
+        <br><br>
         <div>
             <el-tag>标签一</el-tag>
             <el-tag type="success">标签二</el-tag>
@@ -20,6 +24,29 @@
                 {{j.city}}
             </h2>
         </div>
+        <br>
+        <br>
+        <h3>table无数据插槽</h3>
+        <el-table
+            :data="tableData"
+            empty-text="啊呀没有数据"
+            style="width: 100%">
+            <el-table-column
+                prop="date"
+                label="日期"
+                width="180">
+            </el-table-column>
+            <el-table-column
+                prop="name"
+                label="姓名"
+                width="180">
+            </el-table-column>
+            <el-table-column
+                prop="address"
+                label="地址">
+            </el-table-column>
+            <h1 slot="empty">啊呀没有数据插槽</h1> 
+        </el-table>
     </div>
 </template>
 
@@ -32,7 +59,8 @@ export default {
     data() {
         return {
             list: [],
-            other: []
+            other: [],
+            tableData: []
         };
     },
     mounted() {

@@ -2,7 +2,7 @@
     <div>
         <el-dialog 
             :title="title" 
-            :visible.sync="dialogVisible"
+            :visible.sync="visibleComputed"
             width="30%"
             :before-close="handleClose">
             <span>这是一段信息</span>
@@ -24,6 +24,16 @@ export default {
             inputSrt:''
         };
     },
+    computed:{
+        visibleComputed:{
+            get(){
+                return this.dialogVisible
+            },
+            set(val){
+                this.$emit('update:dialogVisible',val);
+            }
+        }
+    },
     props:{
         dialogVisible:{
             type: Boolean,
@@ -44,7 +54,7 @@ export default {
                 .catch( () => {});
         },
         cancelBtn(){
-            this.$emit('cancel',false);
+            this.visibleComputed = false;
         },
         submitBtn(){
             this.$emit('pushStr',this.inputSrt)

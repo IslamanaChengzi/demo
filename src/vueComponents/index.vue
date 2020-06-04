@@ -14,14 +14,13 @@
             <dialogComponent 
                 :title="`提示啊呀`"
                 :dialogVisible="Visible"
-                @cancel="hiddenDialog"
                 @pushStr="submit">
             </dialogComponent>
             <el-button type="primary" @click="Visible = true">点击打开 Dialog</el-button>
             <dialogComponent 
                 :title="`试试插槽`"
                 :dialogVisible="VisibleSlot"
-                @cancel="hiddenDialogSlot"
+                @update:dialogVisible="VisibleSlot = $event"
                 @pushStr="submitSlot">
                 <p slot="footerIn">插槽测试123</p>
             </dialogComponent>
@@ -51,9 +50,6 @@ export default {
         }
     },
     methods: {
-        hiddenDialog(){
-            this.Visible = false;
-        },
         submit(data){
             if(data){
                 this.Visible = false;
@@ -63,9 +59,6 @@ export default {
                     type: 'warning'
                 });
             }
-        },
-        hiddenDialogSlot(){
-            this.VisibleSlot = false;
         },
         submitSlot(data){
             if(data){
