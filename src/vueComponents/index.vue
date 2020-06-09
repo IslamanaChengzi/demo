@@ -1,7 +1,14 @@
 <template>
     <div>
+        <h3>props</h3>
+        <propsComponent
+            :postTitle="propsList.title"
+            :likes="propsList.likes">
+
+        </propsComponent>
+        <br>
+        <br>
         <h1>解析 DOM 模板时的注意事项</h1>
-        
         <h3>动态组件切换</h3>
         <br>
         <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
@@ -88,14 +95,23 @@ import firstTabComponent from './tabComponent/first.vue';
 import secondTabComponent from './tabComponent/second.vue';
 import thirdTabComponent from './tabComponent/third.vue';
 import fourthTabComponent from './tabComponent/fourth.vue';
-
+import propsComponent from './propsTest'
 
 
 	
 export default {
     name:'vueComponent',
     // 注册组件
-    components:{importComponent,dialogComponent,basisComponent,firstTabComponent,secondTabComponent,thirdTabComponent,fourthTabComponent},
+    components:{    
+        importComponent,
+        dialogComponent,
+        basisComponent,
+        firstTabComponent,
+        secondTabComponent,
+        thirdTabComponent,
+        fourthTabComponent,
+        propsComponent
+    },
     data() {
         return {
             activeName: 'first',
@@ -107,7 +123,11 @@ export default {
             ],
             Visible:false,
             VisibleSlot:false,
-            currentTabComponent:firstTabComponent
+            currentTabComponent:firstTabComponent,
+            propsList:{
+                title:'props学习测试',
+                likes:23
+            }
         }
     },
     methods: {
