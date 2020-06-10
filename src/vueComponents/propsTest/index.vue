@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="propsTest" v-bind="$attrs">
         <h5>props内容</h5>
         <p>
             <br>
@@ -18,7 +18,9 @@
     </div>
 </template>
 <script>
+
 export default {
+    inheritAttrs: false,
     name:'props',
     props:{
         postTitle: {
@@ -33,7 +35,10 @@ export default {
         commentIds: Array,
         author: Object,
         callback: Function,
-        contactsPromise: Promise 
+        contactsPromise: Promise
+    },
+    mounted(){
+
     }
 }
 </script>

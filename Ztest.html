@@ -11,7 +11,7 @@
         <span>
             {{ count }}
         </span>
-        <my-component-name></my-component-name>
+        <my-component-name data-date-picker="activated"  style="color:red"></my-component-name>
         <component-a></component-a>
     </div>
 
@@ -22,6 +22,7 @@
 
         // 注册一个全局组件
         Vue.component('my-component-name', { 
+            inheritAttrs: false,// 可以干掉这个 data-date-picker="activated"
             data() {
                 return {
                     msg:'注册一个全局组件'

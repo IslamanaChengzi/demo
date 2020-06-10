@@ -2,6 +2,7 @@
     <div>
         <h3>props</h3>
         <propsComponent
+            data-date-picker="activated"
             :postTitle="propsList.title"
             :likes="propsList.likes">
 
@@ -98,7 +99,7 @@ import fourthTabComponent from './tabComponent/fourth.vue';
 import propsComponent from './propsTest'
 
 
-	
+
 export default {
     name:'vueComponent',
     // 注册组件
@@ -127,7 +128,7 @@ export default {
             propsList:{
                 title:'props学习测试',
                 likes:23
-            }
+            },
         }
     },
     methods: {
