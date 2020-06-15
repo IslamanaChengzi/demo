@@ -2,10 +2,10 @@
     <div>
         <el-dialog 
             :title="title" 
-            :visible.sync="visibleComputed"
+            :visible="visibleComputed"
             width="30%"
             :before-close="handleClose">
-            <span>这是一段信息</span>
+            <span>这是一段信息sync</span>
             <input type="text" v-model="inputSrt">
             <span slot="footer" class="dialog-footer">
                 <el-button @click="cancelBtn">取 消</el-button>

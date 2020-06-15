@@ -1,5 +1,97 @@
 <template>
     <div>
+        <h3>插槽进阶</h3>
+        <br>
+        <div class="eventTestStyle">
+            <deconstruction>
+                <h5 slot="header">子组件属性传递给父组件</h5>
+                <!-- <template  v-slot:default="slotProps"> -->
+                    <!-- 此处 default content 为插槽的name -->
+                <template  v-slot:content="slotProps">
+                    <button @click="slotFn(slotProps)">
+                        {{slotProps.slotUser.lastName}}
+                    </button>
+                </template>
+            </deconstruction>
+            <br>
+            <deconstruction>
+                <h5 slot="header">解构传递</h5>
+                <!-- 默认插槽 -->
+                <!-- <template v-slot="{ slotUser }"> -->
+                <!-- 指定插槽 -->
+                <!-- <template  v-slot:content="{ slotUser }"> -->
+                    <!-- 此处写法为缩写，#= 错误的，必须#content= 要有值 -->
+                <template  #content="{ slotUser }">
+                    <button @click="slotFn(slotUser)">
+                        {{slotUser.lastName}}
+                    </button>
+                </template>
+            </deconstruction>
+            <br>
+            <deconstruction>
+                <h5 slot="header">重命名解构传递</h5>
+                <template v-slot:content="{ slotUser:slotPerson }">
+                    <button @click="slotFn(slotPerson)">
+                        {{slotPerson.lastName}}
+                    </button>
+                </template>
+            </deconstruction>
+            <br>
+            <!-- 此处user在自组件中为undefined，给个默认值 -->
+            <deconstruction>
+                <h5 slot="header">插槽prop是undefined时解构传递</h5>
+                <template v-slot:content="{ user = { firstName: 'Guest' } }">
+                    <button @click="slotFn(user)">
+                        {{user.firstName}}
+                    </button>
+                </template>
+               
+            </deconstruction>
+            <br>
+            <deconstruction>
+                <h5 slot="header">子组件方法传递给父组件</h5>
+                <template v-slot:footer="{ getSlotVal }">
+                    <button @click="slotFn(getSlotVal)">
+                        方法尝试
+                    </button>
+                </template>
+            </deconstruction>
+            
+        </div>
+        <br>
+        <div class="eventTestStyle">
+            <slotTest name="作用域插槽">
+                <!-- <template v-slot:default="slotProps">
+                    {{ slotProps.user.firstName }}
+                </template> -->
+                <template v-slot="slotProps">
+                    {{ slotProps.user.firstName }}
+                </template>
+            </slotTest>
+        </div>
+        <br>
+        <h3>自定义事件</h3>
+        <div class="eventTestStyle">
+            <eventComponent @my-event="eventTodo">
+                <p style="color:blue;">
+                    见证内容插入！
+                </p>
+                <!-- <propsComponent
+                    style="color:blue;"
+                    data-date-picker="activated"
+                    :postTitle="propsList.title"
+                    :likes="propsList.likes">
+
+                </propsComponent> -->
+                <p slot="header" style="color:blue;">
+                    header插入！
+                </p>
+                <template v-slot:footer>
+                    <p style="color:blue;">v-slotsolt内容</p>
+                </template>
+            </eventComponent>
+        </div>
+        
         <h3>props</h3>
         <propsComponent
             data-date-picker="activated"
@@ -75,10 +167,16 @@
             </dialogComponent>
             <br>
             <el-button type="primary" @click="Visible = true">点击打开 Dialog</el-button>
-            <dialogComponent 
-                :title="`试试插槽`"
+            <!-- 
+
                 :dialogVisible="VisibleSlot"
                 @update:dialogVisible="VisibleSlot = $event"
+                简写为 
+                :dialogVisible.sync="VisibleSlot"
+             -->
+            <dialogComponent 
+                :title="`试试插槽`"
+                :dialogVisible.sync="VisibleSlot"
                 @pushStr="submitSlot">
                 <p slot="footerIn">插槽测试123</p>
             </dialogComponent>
@@ -97,6 +195,9 @@ import secondTabComponent from './tabComponent/second.vue';
 import thirdTabComponent from './tabComponent/third.vue';
 import fourthTabComponent from './tabComponent/fourth.vue';
 import propsComponent from './propsTest'
+import eventComponent from './eventTest'
+import slotTest from './slotTest'
+import deconstruction from './slotTest/deconstruction'
 
 
 
@@ -111,7 +212,10 @@ export default {
         secondTabComponent,
         thirdTabComponent,
         fourthTabComponent,
-        propsComponent
+        propsComponent,
+        eventComponent,
+        slotTest,
+        deconstruction
     },
     data() {
         return {
@@ -129,9 +233,17 @@ export default {
                 title:'props学习测试',
                 likes:23
             },
+            // user:{
+            //     firstName:'父组件姓氏',
+            //     lastName:'父组件名字'
+            // }
         }
     },
     methods: {
+        slotFn(data){
+            console.log( data );
+            data()
+        },
         submit(data){
             if(data){
                 this.Visible = false;
@@ -171,7 +283,21 @@ export default {
             } else if(  tab.name == 'fourth' ) {
                 this.currentTabComponent = fourthTabComponent;
             }
+        },
+        // 自定义事件
+        eventTodo(event){
+            console.log(event);
         }
     },
 }
 </script>
+<style scoped>
+h3 {
+    padding: 10px 0;
+}
+.eventTestStyle {
+    background: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+}
+</style>
