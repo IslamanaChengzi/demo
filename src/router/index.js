@@ -9,6 +9,8 @@ import elementUi from '@/elementUi/index.vue';
 import component from '@/vueComponents/index.vue';
 // vue 基础部分重点
 import vueJs from '@/vueJS'
+// 动态组件&异步组件
+import asyncComponents from '@/asyncComponents'
 
 
 
@@ -36,7 +38,13 @@ const router = new VueRouter({
             path: '/vuejs',
             name: 'vueJs',
             component: vueJs
-        }
+        },
+        {
+            path: '/asynccomponents',
+            name: 'asyncComponents',
+            component: asyncComponents
+        },
+        
     ]
 });
 

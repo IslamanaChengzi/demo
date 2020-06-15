@@ -21,6 +21,12 @@
                     <router-link to="/vuejs">Go to vueJS</router-link>
                 </div>
             </el-col>
+            <el-col :span="6">
+                <div class="grid-content bg-purple">
+                    <router-link to="/asynccomponents">动态组件&异步组件</router-link>
+                </div>
+            </el-col>
+            
         </el-row>
     </div>
 </template>

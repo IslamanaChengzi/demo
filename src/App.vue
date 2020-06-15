@@ -23,7 +23,7 @@ export default {
 .viewWrap {
 	background: #0cc;
 	position: absolute;
-	top: 50px;
+	top: 150px;
 	left: 0;
 	right: 0;
     bottom: 30px;
