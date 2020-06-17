@@ -11,3 +11,18 @@
 
 ### 异步组件
     对于异步组件的理解，dom节点渲染后开始调用组件
+
+### 依赖注入
+    $parent property 无法很好的扩展到更深层级的嵌套组件上。
+    比如爷孙组件，或者更深层级组件
+
+    this.$once('hook:beforeDestroy', function () {
+        picker.destroy()
+    })
+    beforeDestroy() {
+
+    }
+    
+### 模板定义的替代品
+
+### X-Template

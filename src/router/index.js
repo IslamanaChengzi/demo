@@ -44,6 +44,11 @@ const router = new VueRouter({
             name: 'asyncComponents',
             component: asyncComponents
         },
+        {
+            path: '/dealborder',
+            name: 'dealBorder',
+            component:() => import('@/dealBorder'),
+        }
         
     ]
 });
