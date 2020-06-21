@@ -48,6 +48,11 @@ const router = new VueRouter({
             path: '/dealborder',
             name: 'dealBorder',
             component:() => import('@/dealBorder'),
+        },
+        {
+            path: '/transition',
+            name: 'transition',
+            component:() => import('@/transition'),
         }
         
     ]

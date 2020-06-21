@@ -31,6 +31,13 @@
                     <router-link to="/dealborder">处理边界情况</router-link>
                 </div>
             </el-col>
+            <el-col :span="6">
+                <div class="grid-content bg-purple">
+                    <router-link to="/transition">过渡</router-link>
+                </div>
+            </el-col>
+
+            
             
         </el-row>
     </div>
