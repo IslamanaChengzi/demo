@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="app">
+        {{ count }}
+        <input v-focus type="text" v-if="truth">
+        <br>
+        <button @click="truth=!truth">切换input</button>
+        <div id="hook-arguments-example" v-demo:foo.a.b="message"></div>
+    </div>
+
+    <!-- Vue.js v2.6.11 -->
+    <script src="./vue.js"></script>
+
+    <script>
+        // bind：只调用一次，指令第一次绑定到元素时调用。
+        // inserted 被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
+        // update：所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。
+        // componentUpdated：指令所在组件的 VNode 及其子 VNode 全部更新后调用。
+        // unbind：只调用一次，指令与元素解绑时调用。
+
+        Vue.directive('focus', {
+            bind(el){
+                console.log(111);
+                console.log(el);
+            },
+            inserted(el) {
+                console.log(222);
+                console.log(el);
+                el.focus();
+            },
+            unbind(el){
+                console.log(333);
+                console.log(el);
+            },
+        })
+
+        // Vue.directive('focus', function(el, binding) {
+        //     console.log(el.focus);
+        //     console.log(binding);
+        //     el.focus();//绑定时机
+        // })
+
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    count: 0,
+                    message:'hello!', //可以是字面量对象
+                    truth:true
+                }
+            },
+            directives: {
+                demo: {
+                    // 指令的定义
+                    inserted: function (el,binding,vnode) {
+                        // console.log(el);
+                        // console.log(binding);
+                        var s = JSON.stringify
+                        el.innerHTML =
+                        'name: '       + s(binding.name) + '<br>' +
+                        'value: '      + s(binding.value) + '<br>' +
+                        'expression: ' + s(binding.expression) + '<br>' +
+                        'argument: '   + s(binding.arg) + '<br>' +
+                        'modifiers: '  + s(binding.modifiers) + '<br>' +
+                        'vnode keys: ' + Object.keys(vnode).join(', ')
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
