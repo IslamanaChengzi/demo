@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渲染函数&JSX</title>
+</head>
+<body>
+    
+    <div id="app">
+        {{ msg }}
+        <anchored-heading :level="1">Hello world!</anchored-heading>
+        <concise-demo :level="2">Hello world!</concise-demo>
+        <render-demo :level="3">Hello world!</render-demo>
+    </div>
+
+    <script src="./vue.js"></script>
+
+    <!-- 全局组件template拆分写法 -->
+    <script type="text/x-template" id="anchored-heading-template">
+        <h1 v-if="level === 1">
+            level-1-<slot></slot>
+        </h1>
+        <h2 v-else-if="level === 2">
+            level-2-<slot></slot>
+        </h2>
+        <h3 v-else-if="level === 3">
+            level-3-<slot></slot>
+        </h3>
+        <h4 v-else-if="level === 4">
+            level-4-<slot></slot>
+        </h4>
+        <h5 v-else-if="level === 5">
+            level-5-<slot></slot>
+        </h5>
+        <h6 v-else-if="level === 6">
+            level-6-<slot></slot>
+        </h6>
+    </script>
+
+    <script>
+
+        Vue.component('anchored-heading',{
+            template:'#anchored-heading-template',
+            props:{
+                level:{
+                    type: Number,
+                    required: true
+                }
+            }
+        });
+
+        Vue.component('conciseDemo', {
+            render (createElement) {
+                return createElement(
+                    'h' + this.level, // 标签
+                    this.$slots.default  //插槽
+                )
+            },
+            props: {
+                level:{
+                    type: Number,
+                    required: true
+                }
+            }
+        });
+
+        Vue.component('renderDemo', {
+            render (createElement) {
+                return createElement( 'h1', this.level + '-' + this.$slots.default[0].text );
+            },
+            props: {
+                level:{
+                    type: Number,
+                    required: true
+                }
+            }
+        });
+
+        new Vue({
+            el:'#app',
+            data() {
+                return {
+                    msg:'render&jsx'
+                }
+            },
+        });
+
+    </script>
+
+</body>
+</html>
