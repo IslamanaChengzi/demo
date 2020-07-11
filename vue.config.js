@@ -4,6 +4,12 @@ console.log( process.env.NODE_ENV );
 console.log( process.env.BABEL_ENV );
 
 module.exports = {
-  // config
-//   123
-}
+	chainWebpack: config => {
+		config.module
+			.rule('pug')
+			.test(/\.pug$/)
+			.use('pug-html-loader')
+			.loader('pug-html-loader')
+			.end()
+	}
+  }
