@@ -36,6 +36,15 @@
                     <router-link to="/transition">过渡</router-link>
                 </div>
             </el-col>
+            <el-col :span="6">
+                <div class="grid-content bg-purple">
+                    <router-link to="/filters">过滤器</router-link>
+                </div>
+            </el-col>
+
+
+
+            
 
             
             

@@ -53,6 +53,11 @@ const router = new VueRouter({
             path: '/transition',
             name: 'transition',
             component:() => import('@/transition'),
+        },
+        {
+            path: '/filters',
+            name: 'filters',
+            component:() => import('@/filtersComponents'),
         }
         
     ]
