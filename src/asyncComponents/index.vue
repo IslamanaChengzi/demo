@@ -15,6 +15,8 @@
             <demoDAsync v-if="truth"></demoDAsync>
             <later></later>
         </div>
+        <h3>调用全局组件</h3>
+        <BaseButton></BaseButton>
     </div>
 </template>
 <script>
