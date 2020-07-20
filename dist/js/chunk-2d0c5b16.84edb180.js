@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0c5b16"],{"3fd1":function(e,n,t){"use strict";t.r(n);var c=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticStyle:{border:"1px solid #999"}},[e._v(" 异步加载进来的组件 ")])},l=[],r=t("2877"),s={},u=Object(r["a"])(s,c,l,!1,null,null,null);n["default"]=u.exports}}]);
-//# sourceMappingURL=chunk-2d0c5b16.84edb180.js.map

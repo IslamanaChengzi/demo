@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0ddc5f"],{"838f":function(e,t,n){"use strict";n.r(t);var r=function(){var e=this,t=e.$createElement;e._self._c;return e._m(0)},c=[function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticStyle:{border:"1px solid #e5e5e5"}},[e._v(" 全局组件来晚了啊 "),n("br"),e._v(" 不点自来的组件啊 ")])}],l=n("2877"),s={},u=Object(l["a"])(s,r,c,!1,null,null,null);t["default"]=u.exports}}]);
-//# sourceMappingURL=chunk-2d0ddc5f.c222e406.js.map
