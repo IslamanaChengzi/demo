@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>渲染函数&JSX</title>
+</head>
+
+<body>
+
+    <div id="appVma">
+
+    </div>
+
+    <div id="appVmb">
+
+    </div>
+
+    <script src="./vue.js"></script>
+
+    <script>
+        
+        var store = {
+            debug: true,
+            state: {
+                message: 'Hello!'
+            },
+            setMessageAction(newValue) {
+                if (this.debug) console.log('setMessageAction triggered with', newValue)
+                this.state.message = newValue
+            },
+            clearMessageAction() {
+                if (this.debug) console.log('clearMessageAction triggered')
+                this.state.message = ''
+            }
+        }
+
+        var vmA = new Vue({
+            el:'#appVma',
+            data: {
+                privateState: {},
+                sharedState: store.state
+            },
+            created() {
+                console.log( store.state );
+            },
+            mounted() {
+                setTimeout( () => {
+                    store.setMessageAction('world')
+                },2000);
+                setTimeout( () => {
+                    console.log( this.sharedState );
+                },2500);
+            },
+        })
+
+        var vmB = new Vue({
+            el:'#appVmb',
+            data: {
+                privateState: {},
+                sharedState: store.state
+            }
+        })
+    </script>
+
+
+
+</body>
+
+</html>
