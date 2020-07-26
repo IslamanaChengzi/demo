@@ -46,3 +46,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
         --watch       监听文件变化
 
         "ins": "vue-cli-service inspect"
+
+### vue的安全措施
+    # HTML 内容会被转义成字符串，实体字符
+    # Attribute 绑定同上
