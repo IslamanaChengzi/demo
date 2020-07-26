@@ -239,10 +239,17 @@ export default {
             // }
         }
     },
+    created(){
+        this.$EventBus.$on('endThing',function () {
+            console.log('接受到消息了！(跨组件通信！)')
+        })
+    },
     methods: {
         slotFn(data){
             console.log( data );
-            data()
+            if( typeof data == 'function' ){
+                data()
+            }
         },
         submit(data){
             if(data){

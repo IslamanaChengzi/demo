@@ -7,6 +7,7 @@
             :before-close="handleClose">
             <span>这是一段信息sync</span>
             <input type="text" v-model="inputSrt">
+            <button @click="sendInfo">$emit发送按钮</button>
             <span slot="footer" class="dialog-footer">
                 <el-button @click="cancelBtn">取 消</el-button>
                 <el-button type="primary" @click="submitBtn">确 定</el-button>
@@ -58,6 +59,9 @@ export default {
         },
         submitBtn(){
             this.$emit('pushStr',this.inputSrt)
+        },
+        sendInfo(){
+            this.$EventBus.$emit('endThing')
         }
     }
 };
